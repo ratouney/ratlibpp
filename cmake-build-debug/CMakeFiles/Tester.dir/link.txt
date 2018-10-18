@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Tester.dir/main.cpp.o  -o Tester -Wl,-rpath,/home/ratouney/RatLib/cmake-build-debug libRat.so -lpthread 
