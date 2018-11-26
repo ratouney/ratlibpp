@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libRat.so.0.0.1 -o libRat.so.0.0.1 CMakeFiles/Rat.dir/src/Error.cpp.o 
