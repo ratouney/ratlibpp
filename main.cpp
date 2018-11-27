@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	try {
 		Rat::File f;
 
-		f.setPath("./CMakeFiles");
+		f.setPath(argv[1]);
 		f.bufferize();
 		
 		for (auto &line : f) {
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 
 
 	} catch (Rat::Error &e) {
-		e.print();
+		e.info();
 	}
 
 	return 0;

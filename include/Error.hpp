@@ -1,37 +1,44 @@
 /*
- *
- * Hello there, welcome to Ratlib
- *
- */
+** EPITECH PROJECT, 2018
+** RatLib++
+** File description:
+** Error
+*/
 
+/*
+** Use like a regular exception but give a string as argument
+**
+** > throw Rat::Error("Hello there");
+**
+*/
+
+#ifndef RATLIBPP_ERROR_
+#define RATLIBPP_ERROR_
+
+#include <iostream>
 #include <exception>
 #include <string>
 
-/*
- * Use like a regular exception but give a string as argument
- *
- * > throw Rat::Error("Hello there");
- *
- */
-
 namespace Rat {
-	class Error : public std::exception {
-		public:
+    struct Error : public std::exception {
+    public:
+        Error(std::string cause, std::string func = "unknown", std::string file = "unknown", size_t line = 0);
+        Error() = default;
 
-		// Created from a string that contains the error message
-		explicit Error(const std::string &given = "Say what ?");
-		~Error() = default;
+        const char *what() const throw();
+        void info() const;
+        void debugInfo() const;
 
-		// Function called at runtime when an exception is not caught
-		const char *what() const noexcept override;
+        const std::string &get_func() const;
+        const std::string &get_file() const;
+        size_t get_line() const;
 
-		// Custom function that can be called to retrieve the error in a Try/Catch loop
-		void print() const;
+    protected:
+        std::string _cause;
+        std::string _func;
+        std::string _file;
+        size_t _line;
+    };
+} // namespace Rat
 
-		// Return the contained string
-		const std::string &getString() const;
-
-		private:
-			std::string _msg;
-	};
-}
+#endif /* !RATLIBPP_ERROR_ */
